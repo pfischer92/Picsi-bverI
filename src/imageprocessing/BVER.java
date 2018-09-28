@@ -28,13 +28,14 @@ public class BVER {
 		assert views != null : "views are null";
 		m_views = views;
 
-		m_menuItems.add(new ImageMenuItem("Channel R\tCtrl+1", 								SWT.CTRL | '1', new ChannelRGB(0)));
-		m_menuItems.add(new ImageMenuItem("Channel G\tCtrl+2", 								SWT.CTRL | '2', new ChannelRGB(1)));
-		m_menuItems.add(new ImageMenuItem("Channel B\tCtrl+3", 								SWT.CTRL | '3', new ChannelRGB(2)));
-		m_menuItems.add(new ImageMenuItem("C&ropping\tCtrl+R", 								SWT.CTRL | 'R', new Cropping()));
-		m_menuItems.add(new ImageMenuItem("Debayering\tCtrl+4", 								SWT.CTRL | '4', new Debayering()));
-		m_menuItems.add(new ImageMenuItem("Debayering_Mac\tCtrl+5", 								SWT.CTRL | '5', new Debayering_Mac()));
-		m_menuItems.add(new ImageMenuItem("Debayering_sol\tCtrl+6", 								SWT.CTRL | '6', new Debayering_sol()));
+		m_menuItems.add(new ImageMenuItem("Channel R\tCtrl+1",SWT.CTRL | '1', new ChannelRGB(0)));
+		m_menuItems.add(new ImageMenuItem("Channel G\tCtrl+2",SWT.CTRL | '2', new ChannelRGB(1)));
+		m_menuItems.add(new ImageMenuItem("Channel B\tCtrl+3",SWT.CTRL | '3', new ChannelRGB(2)));
+		m_menuItems.add(new ImageMenuItem("C&ropping\tCtrl+R",SWT.CTRL | 'R', new Cropping()));
+		m_menuItems.add(new ImageMenuItem("Debayering\tCtrl+4",SWT.CTRL | '4', new Debayering()));
+		m_menuItems.add(new ImageMenuItem("Debayering_Mac\tCtrl+5",SWT.CTRL | '5', new Debayering_Mac()));
+		m_menuItems.add(new ImageMenuItem("Debayering_sol\tCtrl+6",SWT.CTRL | '6', new Debayering_sol()));
+
 		// TODO add here further image processing entries (they are inserted into the BVER menu)
 	}
 	

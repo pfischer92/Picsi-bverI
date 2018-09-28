@@ -20,18 +20,19 @@ public class ImageFiles {
 	public static int IMAGE_PGM = SWT.IMAGE_UNDEFINED;
 	public static int IMAGE_PPM = SWT.IMAGE_UNDEFINED;
 	public static int IMAGE_RAW = SWT.IMAGE_UNDEFINED;
+	public static int IMAGE_HUF = SWT.IMAGE_UNDEFINED;
 
 	private static final String[] OPEN_FILTER_EXTENSIONS = new String[] {
 			"*.bmp;*.gif;*.ico;*.jfif;*.jpeg;*.jpg;*.png;*.tif;*.tiff",
-			"*.bmp", "*.gif", "*.ico", "*.jpg;*.jpeg;*.jfif", "*.png", "*.tif;*.tiff" };
+			"*.bmp", "*.gif", "*.ico", "*.jpg;*.jpeg;*.jfif", "*.png", "*.tif;*.tiff", "*.raw", "*.huf" };
 	private static final String[] OPEN_FILTER_NAMES = new String[] {
 		"All images",
 		"BMP (*.bmp)", "GIF (*.gif)", "ICO (*.ico)", "JPEG (*.jpg, *.jpeg, *.jfif)",
-		"PNG (*.png)", "TIFF (*.tif, *.tiff)" };
+		"PNG (*.png)", "TIFF (*.tif, *.tiff)", "RAW (*.raw)", "HUFMAN (*.huf)" };
 	private static final String[] SAVE_FILTER_EXTENSIONS = new String[] {
-		"*.bmp", "*.gif", "*.ico", "*.jpg", "*.png", "*.tif" };
+		"*.bmp", "*.gif", "*.ico", "*.jpg", "*.png", "*.tif", "*.huf" };
 	private static final String[] SAVE_FILTER_NAMES = new String[] {
-		"BMP (*.bmp)", "GIF (*.gif)", "ICO (*.ico)", "JPEG (*.jpg)", "PNG (*.png)", "TIFF (*.tif)" };
+		"BMP (*.bmp)", "GIF (*.gif)", "ICO (*.ico)", "JPEG (*.jpg)", "PNG (*.png)", "TIFF (*.tif)","HUFMAN (*.huf)"};
 
 	private static class ImageFile {
 		private String m_fileTypeString;
@@ -65,6 +66,7 @@ public class ImageFiles {
 		IMAGE_PGM = registerImageFile("PGM", "pgm", PNM.class, true, Picsi.IMAGE_TYPE_GRAY);
 		IMAGE_PPM = registerImageFile("PPM", "ppm", PNM.class, true, Picsi.IMAGE_TYPE_RGB);
 		IMAGE_RAW = registerImageFile("RAW", "raw", Raw.class, true, 0);
+		IMAGE_HUF = registerImageFile("HUFMAN", "huf", Huffman.class, true, Picsi.IMAGE_TYPE_GRAY);
 		
 		// TODO call registerImageFile(...) for each user specific image file once
 	}
