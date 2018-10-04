@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 10.0.2 [10.0.2]">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/patrick/Documents/Sources/Picsi-bverI/jts-core-1.14.0.jar"/>
-	<classpathentry kind="lib" path="/Users/patrick/Documents/Sources/Picsi-bverI/swt_mac.jar"/>
+	<classpathentry kind="lib" path="C:/Users/i00108438/source/fhnw/Picsi-bverI/jts-core-1.14.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/i00108438/source/fhnw/Picsi-bverI/swt_win.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

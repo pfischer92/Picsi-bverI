@@ -164,15 +164,7 @@ public class Huffman implements IImageFile {
 		Leaf[] codes = new Leaf[hist.length];
 		Node root = createHuffmanTree(hist, codes, size);
 		BitSet data = encodeImage(outData, codes);
-
-		// compute mean code length
-		double sum = 0;
-		for(int i=0; i < codes.length; i++) {
-			sum += codes[i].getProbability()*codes[i].getCodeLen();
-		}
-
-		System.out.println("mittlere Codelaenge: " + (float)sum);
-		System.out.println("Speicherbedarf: " + (int)Math.ceil(sum*size/8) + " Byte");
+		
 
 		// TODO write Header
 		out.writeInt(w);
@@ -197,35 +189,42 @@ public class Huffman implements IImageFile {
 	 */
 	private Node createHuffmanTree(int[] hist, Leaf[] codes, int size) {
 		PriorityQueue<Node> pq = new PriorityQueue<Node>(hist.length);
+        double ld = Math.log(2), H = 0, p;
 
-		// TODO Wahrscheinlichkeiten und Entropie berechnen und neue Blattknoten erzeugen (die Blattknoten sowohl in die Code-Tabelle als auch in die PQ einfï¿½gen)
-		double ld = Math.log(2);
-		double H = 0;
-		double p;
-		
-		// TODO Mittlere Codelï¿½nge und Datei-Speicherbedarf abschï¿½tzen (Unter- und Obergrenze) und auf der Konsole ausgeben
-		System.out.println("GeschÃ¤tzte mittlere CodelÃ¤nge: " + (float)H +  "," + (float)(H+1));
-		System.out.println("GeschÃ¤tzte Speicherbedarf: " + (float)H*size/8 +  "," + (float)(H+1)*size/8 + " Byte");
-		
-		// TODO Codebaum aufbauen: Verwenden Sie die pq, um die zwei jeweils kleinsten Nodes zu holen
-		for(int i = 0; i < hist.length; i++) {
+		// compute probabilities and entropy
+		for(int i=0; i < hist.length; i++) {
 			p = (double)(hist[i])/size;
-			H -= ((p == 0)? 0 : p * Math.log(p)/ld);
-			codes[i] = new Leaf(p, (byte)i);
+            	H -= ((p == 0) ? 0 : p*Math.log(p)/ld);
+			codes[i] = new Leaf(p, (byte)i); 
 			pq.add(codes[i]);
 		}
-		
-		// TODO Wurzelknoten holen und rekursiv alle Codes erzeugen
+
+		// estimate mean code length and needed file storage size
+		System.out.println("geschätzte mittlere Codelänge: [" + (float)H + ", " + (float)(H + 1) + ")");
+		System.out.println("geschätzter Speicherbedarf: [" + (int)(H*size/8) + ", " + (int)Math.ceil((H + 1)*size/8) + ") Byte");
+
+		// build Huffman tree
 		while(pq.size() >= 2) {
 			Node v1 = pq.poll();
 			Node v2 = pq.poll();
-			pq.add(new Node(v1, v2));
+			
+			pq.add(new Node(v1, v2)); 
 		}
+		
+		// get root node and create Huffman codes
 		Node root = pq.poll();
-		
-		// TODO Mittlere Codelï¿½nge und Datei-Speicherbedarf berechnen und auf der Konsole ausgeben
+		System.out.println("Probability p = " + (float)root.getProbability());
+		root.setCode(0, 0);
 
-		
+		// compute mean code length and needed file storage size
+		double sum = 0;
+		for(int i=0; i < codes.length; i++) {
+			sum += codes[i].getProbability()*codes[i].getCodeLen();
+		}
+
+		System.out.println("mittlere Codelänge: " + (float)sum);
+		System.out.println("Speicherbedarf: " + (int)Math.ceil(sum*size/8) + " Byte");
+
 		return root;
 	}
 
@@ -249,7 +248,7 @@ public class Huffman implements IImageFile {
 			for(int u = 0; u < w; u++) {
 				node = codes[outData.getPixel(u, v)];
 				code = node.getCode();
-				for(int i = node.getCodeLen() - 1; i >= 0;i--) {
+				for(int i = node.getCodeLen() - 1; i >= 0; i--) {
 					bs.set(index + i, code%2 == 1);
 					code >>= 1;
 				}

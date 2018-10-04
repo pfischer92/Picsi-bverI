@@ -66,7 +66,7 @@ public class ImageFiles {
 		IMAGE_PGM = registerImageFile("PGM", "pgm", PNM.class, true, Picsi.IMAGE_TYPE_GRAY);
 		IMAGE_PPM = registerImageFile("PPM", "ppm", PNM.class, true, Picsi.IMAGE_TYPE_RGB);
 		IMAGE_RAW = registerImageFile("RAW", "raw", Raw.class, true, 0);
-		IMAGE_HUF = registerImageFile("HUFMAN", "huf", Huffman.class, true, Picsi.IMAGE_TYPE_GRAY);
+		IMAGE_HUF = registerImageFile("HUFMANN", "huf", Huffman.class, true, Picsi.IMAGE_TYPE_GRAY | Picsi.IMAGE_TYPE_BINARY | Picsi.IMAGE_TYPE_INDEXED);
 		
 		// TODO call registerImageFile(...) for each user specific image file once
 	}
