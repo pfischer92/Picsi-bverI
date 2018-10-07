@@ -37,6 +37,8 @@ public class BVER {
 		m_menuItems.add(new ImageMenuItem("Debayering_sol\tCtrl+6",SWT.CTRL | '6', new Debayering_sol()));
 		m_menuItems.add(new ImageMenuItem("Linear Histogram Comp\tCtrl+7",SWT.CTRL | '7', new LinearHistogramCompensation()));
 		m_menuItems.add(new ImageMenuItem("Modified Gamma Corection\tCtrl+6",SWT.CTRL | '8', new ModifiedGammaCorr()));
+		m_menuItems.add(new ImageMenuItem("Modified Inverted Gamma Corection\tCtrl+6",SWT.CTRL | '8', new ModifiedInvertedGammaCorr()));
+
 		// TODO add here further image processing entries (they are inserted into the BVER menu)
 	}
 	
