@@ -35,6 +35,7 @@ public class BVER {
 		m_menuItems.add(new ImageMenuItem("Debayering\tCtrl+4",SWT.CTRL | '4', new Debayering()));
 		m_menuItems.add(new ImageMenuItem("Debayering_Mac\tCtrl+5",SWT.CTRL | '5', new Debayering_Mac()));
 		m_menuItems.add(new ImageMenuItem("Debayering_sol\tCtrl+6",SWT.CTRL | '6', new Debayering_sol()));
+		m_menuItems.add(new ImageMenuItem("Linear Histogram Comp\tCtrl+7",SWT.CTRL | '7', new LinearHistogramCompensation()));
 
 		// TODO add here further image processing entries (they are inserted into the BVER menu)
 	}

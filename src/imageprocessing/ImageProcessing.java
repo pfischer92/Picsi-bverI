@@ -186,4 +186,17 @@ public class ImageProcessing {
 		return true;
 	}
 	
+	/**
+	 * Apply a lookup table
+	 */
+	public static ImageData applyLUT(ImageData inData, byte[] lUT) {
+		
+		for(int v = 0; v < inData.width; v++) {
+			for(int u = 0; u < inData.height; u++) {
+				int i = inData.getPixel(u, v);
+				inData.setPixel(u, v, lUT[i]);
+			}
+		}
+		return inData;
+	}
 }
